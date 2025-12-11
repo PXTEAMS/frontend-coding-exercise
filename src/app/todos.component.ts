@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map} from "rxjs";
-import {NgForOf} from "@angular/common";
+import { map } from "rxjs";
+import { NgForOf } from "@angular/common";
 
 export interface Todo {
   userId: number;
@@ -27,6 +27,7 @@ export interface UserFromBackend {
 @Component({
   selector: 'app-todos',
   template: `
+    <p>Current user is {{user.username}}</p>
     <button
       style="padding: 10px 20px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 15px; cursor: pointer; transition: background 0.25s; box-shadow: 0 2px 6px rgba(0,0,0,0.15);"
       (click)="getData()">Load tasks
@@ -64,7 +65,7 @@ export class TodosComponent implements OnInit {
   currentUserId = 3;
   user!: User;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   ngOnInit() {
 
@@ -72,35 +73,35 @@ export class TodosComponent implements OnInit {
 
   getData() {
     this.http.get<UserFromBackend[]>('https://jsonplaceholder.typicode.com/users').pipe(
-        map((r: UserFromBackend[]) => {
-          const found = r.find((u) => u.id === this.currentUserId)
-          const user: User = {
-            userId: found?.id as number,
-            username: found?.name as unknown as string
-          }
+      map((r: UserFromBackend[]) => {
+        const found = r.find((u) => u.id === this.currentUserId)
+        const user: User = {
+          userId: found?.id as number,
+          username: found?.name as unknown as string
+        }
 
-          return user;
-        }))
+        return user;
+      }))
       .subscribe(user => {
         this.user = user;
 
         this.http.get<TodosBackend[]>('https://jsonplaceholder.typicode.com/todos').pipe(
-            map((r: TodosBackend[]) => {
-              const todos: Todo[] = [];
+          map((r: TodosBackend[]) => {
+            const todos: Todo[] = [];
 
-              r.forEach((t) => {
-                const todo: Todo = {
-                  todoId: t.id,
-                  userId: t.userId,
-                  title: t.title,
-                  completed: t.completed
-                }
-                todos.push(todo);
+            r.forEach((t) => {
+              const todo: Todo = {
+                todoId: t.id,
+                userId: t.userId,
+                title: t.title,
+                completed: t.completed
+              }
+              todos.push(todo);
 
-              })
+            })
 
-              return todos;
-            }))
+            return todos;
+          }))
           .subscribe(todo => {
             this.todos = todo;
           });
