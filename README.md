@@ -1,4 +1,22 @@
-# FrontendCodingExercise
+# PX Frontend Coding Exercise
+
+## App
+
+<img width="1349" height="719" alt="image" src="https://github.com/user-attachments/assets/d1af0a29-99b7-4e7c-81da-ba4ccf856141" />
+
+This app shows the ToDo items for user with ID 3, which is a hardcoded requirement.
+
+## Goal
+
+This app was developed by an intern without too much Angular knowledge. We want to move the app to production, so now it needs to be made ready for production. It's up to you to refactor this small app to make it live up to your standards in coding.
+
+A few remarks:
+* You will very likely not have enough time to fix everything, so choose what to improve carefully.
+* You can't change anything about the calls to the backend. Of course you can change the code that makes the calls, but not the URLs of them or anything else.
+* As always with refactorings, the functionality needs to stay as it currently is.
+* Note everything you see to the interviewers, even if you decide not to refactor it
+
+## Setup 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.10.
 
@@ -6,22 +24,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
